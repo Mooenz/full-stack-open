@@ -12,8 +12,8 @@ Este repositorio está hecho para agregar las soluciones a los diferentes retos 
   - [**Estado del curso**](#estado-del-curso)
   - [**Tecnologías utilizadas**](#tecnologías-utilizadas)
   - [**Estado del curso**](#estado-del-curso)
-  - [**Licencia**](#licencia)
   - [**Contacto**](#contacto)
+  - [**Licencia**](#licencia)
 
 ## **Part 0: Fundamentos de las aplicaciones web**
 
@@ -137,14 +137,14 @@ server-->browser: {"message":"note created"}
 | 8     | ⬛     |
 | 9     | ⬛     |
 
-## **Licencia**
-
-Este proyecto está licenciado bajo los términos de la [Licencia MIT](LICENSE).
-
-Puedes usar, modificar y distribuir este código libremente, siempre y cuando conserves el aviso de copyright y la licencia original.
-
 ## **Contacto**
 
 - Website [mooenz.me](https://www.mooenz.me/)
 - GitHub [@mooenz](https://github.com/Mooenz)
 - Twitter [@mooenzdev](https://twitter.com/MooenzDev)
+
+## **Licencia**
+
+Este proyecto está licenciado bajo los términos de la [Licencia MIT](LICENSE).
+
+Puedes usar, modificar y distribuir este código libremente, siempre y cuando conserves el aviso de copyright y la licencia original.
