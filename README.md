@@ -1,15 +1,18 @@
-# **Full Stack Open 2022**
+# **Full Stack Open 2025**
 
-Este repositorio está hecho para agregar las soluciones a los diferentes retos impuestos por el Bootcamp Full Stack Open 2022
+Este repositorio está hecho para agregar las soluciones a los diferentes retos impuestos por el Bootcamp Full Stack Open 2025
 
 ## **Contenido**
 
-- [**Full Stack Open 2022**](#full-stack-open-2022)
+- [**Full Stack Open 2025**](#full-stack-open-2025)
   - [**Part 0: Fundamentos de las aplicaciones web**](#part-0-fundamentos-de-las-aplicaciones-web)
     - [0.4: Nueva nota](#04-nueva-nota)
     - [0.5: Aplicación de una sola página](#05-aplicación-de-una-sola-página)
     - [0.6: Nueva nota spa](#06-nueva-nota-spa)
   - [**Estado del curso**](#estado-del-curso)
+  - [**Tecnologías utilizadas**](#tecnologías-utilizadas)
+  - [**Estado del curso**](#estado-del-curso)
+  - [**Licencia**](#licencia)
   - [**Contacto**](#contacto)
 
 ## **Part 0: Fundamentos de las aplicaciones web**
@@ -83,7 +86,7 @@ that requests JSON data from server
 end note
 
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
-server-->browser: [{" content":"make american great again!","date":"2022-05-10T14:31:13.201Z"}...]
+server-->browser: [{" content":"make american great again!","date":"2025-05-10T14:31:13.201Z"}...]
 
 note over browser:
 browser executes the event handler
@@ -112,6 +115,13 @@ browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/spa
 server-->browser: {"message":"note created"}
 ```
 
+## **Tecnologías utilizadas**
+
+- **Frontend:** React, JavaScript, HTML, CSS
+- **Backend:** Node.js, Express
+- **Base de datos:**
+- **Herramientas:** Git
+
 ## **Estado del curso**
 
 | Parte | Estado |
@@ -126,6 +136,12 @@ server-->browser: {"message":"note created"}
 | 7     | ⬛     |
 | 8     | ⬛     |
 | 9     | ⬛     |
+
+## **Licencia**
+
+Este proyecto está licenciado bajo los términos de la [Licencia MIT](LICENSE).
+
+Puedes usar, modificar y distribuir este código libremente, siempre y cuando conserves el aviso de copyright y la licencia original.
 
 ## **Contacto**
 
