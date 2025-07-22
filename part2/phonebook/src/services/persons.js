@@ -12,7 +12,11 @@ const createPerson = (personObject) => {
   return request.then((response) => response.data);
 };
 
-const deletePerson = (id) => axios.delete(`${urlBase}/${id}`);
+const deletePerson = (id) => {
+  const request = axios.delete(`${urlBase}/${id}`);
+
+  return request.then((response) => response.data);
+}
 
 const updateNumber = (id, personObject) => {
   const request = axios.put(`${urlBase}/${id}`, personObject);

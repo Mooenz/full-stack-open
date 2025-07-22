@@ -1,50 +1,47 @@
 import { useState, useEffect } from 'react';
 
-// Axios
-import axios from 'axios';
-
 //Components
 import Search from './components/Search';
 import Countries from './components/Countries';
 
+// Services
+import services from './services/countries'
+
 const App = () => {
   //States
   const [countries, setCountries] = useState([]);
-  const [newCountrie, setNewCountrie] = useState('');
+  const [newCountry, setNewCountry] = useState('');
   const [show, setShow] = useState('');
 
   // Handles events
-  const handleInputCountrie = (event) => setNewCountrie(event.target.value);
-
-  const handleButton = (countrieState) => setShow(countrieState);
+  const handleInputCountry = (event) => setNewCountry(event.target.value);
+  const handleButton = (countryState) => setShow(countryState);
 
   // Filter
-  const countruiesToShow =
-    newCountrie === ''
+  const countriesToShow =
+    newCountry === ''
       ? countries
       : countries.filter(
-          (countrie) =>
-            countrie.name.common
-              .toLocaleLowerCase()
-              .indexOf(newCountrie.toLocaleLowerCase()) > -1
-        );
-
-
+        (country) =>
+          country.name.common
+            .toLocaleLowerCase()
+            .indexOf(newCountry.toLocaleLowerCase()) > -1
+      );
 
   // Effect
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all').then((response) => {
-      setCountries(response.data);
-    });
+    services.getAll().then(newCountries => {
+      setCountries(newCountries)
+    })
   }, []);
 
   return (
     <>
-      <Search newCountrie={newCountrie} handle={handleInputCountrie} />
+      <Search newCountry={ newCountry } handle={ handleInputCountry } />
       <Countries
-        countries={countruiesToShow}
-        handle={handleButton}
-        show={show}
+        countries={ countriesToShow }
+        handle={ handleButton }
+        show={ show }
       />
     </>
   );

@@ -1,45 +1,49 @@
 import { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types'
 
-// Axios
-import axios from 'axios';
-
+// Services
+import getData from '../services/weather'
 const Weather = ({ capital }) => {
   // States
   const [dataWeather, setDataWeather] = useState({});
 
-  // Api key
-  const apiKey = process.env.REACT_APP_API_KEY;
-
   // Effect
   useEffect(() => {
-    axios
-      .get(
-        `http://api.weatherstack.com/current?access_key=${apiKey}&query=${capital}`
-      )
-      .then((response) => {
-        const { temperature, weather_icons, wind_speed, wind_dir } =
-          response.data.current;
-        setDataWeather({
-          temperature,
-          weather_icons,
-          wind_speed,
-          wind_dir,
-        });
+    getData.getWeatherCountry(capital).then(response => {
+      console.log(response);
+      // const { temperature, weather_icons, wind_speed, wind_dir } =
+      //   response.data.current;
+      const temperature = response.main.temp;
+      const weather_icons = response.weather[0].icon;
+      const wind_speed = response.wind.speed;
+      const wind_dir = response.wind.deg;
+
+      setDataWeather({
+        temperature,
+        weather_icons,
+        wind_speed,
+        wind_dir,
       });
-  }, [apiKey, capital]);
+    })
+  }, [capital]);
+
 
   return (
     <>
-      <h3>Weather in </h3>
+      <h2>Weather in </h2>
       <div>
-        <b>temperature</b> {dataWeather.temperature} Celcius
+        <b>Temperature</b> { dataWeather.temperature } Celcius
       </div>
-      <img src={dataWeather.weather_icons} alt="" />
+      <img src={ `http://openweathermap.org/img/wn/${dataWeather.weather_icons}.png` } alt="" />
       <div>
-        <b>wind</b> {dataWeather.wind_speed} direction {dataWeather.wind_dir}
+        <b>Wind</b> { dataWeather.wind_speed } m/s
       </div>
     </>
   );
 };
+
+Weather.propTypes = {
+  capital: PropTypes.string.isRequired
+}
 
 export default Weather;

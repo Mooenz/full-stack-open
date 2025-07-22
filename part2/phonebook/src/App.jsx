@@ -11,13 +11,29 @@ import services from './services/persons';
 
 const App = () => {
   // States
-  const [persons, setPersons] = useState([]);
+  const [persons, setPersons] = useState(null);
   const [newPerson, setNewPerson] = useState({ name: '', number: '' });
   const [filter, setfilter] = useState('');
   const [message, setMessage] = useState({
     body: '',
-    type: '',
+    type: 'success',
   });
+
+  // Get persons
+  const getPersons = () => {
+    services.getPersons().then((response) => {
+      return setPersons(response);
+    });
+  };
+
+  // UseEffect
+  useEffect(() => {
+    getPersons();
+  }, []);
+
+  if (!persons) {
+    return null
+  }
 
   // newPerson.name exist in persons ?
   const isNewName = persons.find(
@@ -25,7 +41,7 @@ const App = () => {
       person.name.toLocaleLowerCase() === newPerson.name.toLocaleLowerCase()
   );
 
-  const serchPersonDelect = persons.filter(
+  const searchPersonDelete = persons.filter(
     (person) =>
       person.name.toLocaleLowerCase() === newPerson.name.toLocaleLowerCase()
   );
@@ -37,6 +53,7 @@ const App = () => {
     const personObject = {
       name: newPerson.name,
       number: newPerson.number,
+      id: isNewName ? searchPersonDelete[0].id : (persons.length + 1).toString(),
     };
 
     if (!isNewName) {
@@ -45,23 +62,19 @@ const App = () => {
         setNewPerson({ name: '', number: '' });
         getPersons();
 
-        const mesageObject = {
+        const messageObject = {
           body: `Added ${personObject.name}`,
           type: 'success',
         };
 
-        setMessage(mesageObject);
-
-        // setTimeout(() => {
-        //   setSuccess(null)
-        // }, 5000);
+        setMessage(messageObject);
       });
     } else {
       const confirm = window.confirm(
-        `${newPerson.name} is already added to phonebook, replace the old number whit a new one?`
+        `${newPerson.name} is already added to Phonebook, replace the old number whit a new one?`
       );
 
-      const id = serchPersonDelect[0].id;
+      const id = searchPersonDelete[0].id;
 
       confirm &&
         services
@@ -72,16 +85,21 @@ const App = () => {
             );
             setNewPerson({ name: '', number: '' });
             getPersons();
+            const messageObject = {
+              body: `Updated ${personObject.name}`,
+              type: 'success',
+            };
+            setMessage(messageObject);
           })
           .catch((error) => {
             console.error(`Update number failed: ${error}`);
 
-            const mesageObject = {
+            const messageObject = {
               body: `information of ${personObject.name} has already been removed from server`,
               type: 'error',
             };
 
-            setMessage(mesageObject);
+            setMessage(messageObject);
           });
     }
   };
@@ -103,6 +121,20 @@ const App = () => {
     confirmDeleted &&
       services.deletePerson(id).then(() => {
         setPersons(persons.filter((person) => person.id !== id));
+        const messageObject = {
+          body: `Deleted ${name}`,
+          type: 'success',
+        };
+        setMessage(messageObject);
+      }).catch((error) => {
+        console.error(`Delete person failed: ${error}`);
+
+        const messageObject = {
+          body: `Information of ${name} has already been removed from server`,
+          type: 'error',
+        };
+
+        setMessage(messageObject);
       });
   };
 
@@ -111,39 +143,28 @@ const App = () => {
     filter === ''
       ? persons
       : persons.filter(
-          (person) =>
-            person.name
-              .toLocaleLowerCase()
-              .indexOf(filter.toLocaleLowerCase()) > -1
-        );
-  // Get persons
-  const getPersons = () => {
-    services.getPersons().then((response) => {
-      return setPersons(response);
-    });
-  };
-
-  // UseEffect
-  useEffect(() => {
-    getPersons();
-  }, []);
+        (person) =>
+          person.name
+            .toLocaleLowerCase()
+            .indexOf(filter.toLocaleLowerCase()) > -1
+      );
 
   return (
     <div>
       <h2>Phonebook</h2>
-      {message.body !== '' && <Notification message={message} />}
-      <Filter handleFilter={handleFilter} />
+      <Notification message={ message } />
+      <Filter handleFilter={ handleFilter } />
       <div>
         <h2>add a new</h2>
       </div>
       <PersonForm
-        addNewName={addNewName}
-        handleNewName={handleNewName}
-        handleNewPhone={handleNewPhone}
-        newPerson={newPerson}
+        addNewName={ addNewName }
+        handleNewName={ handleNewName }
+        handleNewPhone={ handleNewPhone }
+        newPerson={ newPerson }
       />
       <h2>Numbers</h2>
-      <Persons personToShow={personToShow} handleButton={deletedPerson} />
+      <Persons personToShow={ personToShow } handleButton={ deletedPerson } />
     </div>
   );
 };
