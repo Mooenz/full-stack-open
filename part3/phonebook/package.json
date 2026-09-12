@@ -1,0 +1,14 @@
+{
+	"name": "phonebook-monorepo",
+	"private": true,
+	"packageManager": "pnpm@12.3.4",
+	"scripts": {
+		"dev": "pnpm --parallel --filter frontend --filter backend dev",
+		"dev:frontend": "pnpm --filter frontend dev",
+		"dev:backend": "pnpm --filter backend dev",
+		"build:ui": "rm -rf backend/dist && pnpm --filter frontend build && cp -r frontend/dist backend/dist",
+		"build": "pnpm --filter backend build",
+		"typecheck": "pnpm --filter frontend --filter backend typecheck",
+		"lint": "pnpm --filter frontend lint"
+	}
+}

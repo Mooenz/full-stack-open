@@ -1,0 +1,24 @@
+.notification {
+	max-width: 500px;
+	background-color: lightgray;
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 3px solid gray;
+}
+
+.success {
+	max-width: 500px;
+	border-color: green;
+	color: green;
+}
+
+.hide {
+	display: none;
+}
+
+.error {
+	border-color: red;
+	color: red;
+}

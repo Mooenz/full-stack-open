@@ -1,0 +1,38 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"scripts": {
+		"start": "node build/index.js",
+		"dev": "tsx watch --env-file=.env index.ts",
+		"dev:ts": "tsx watch --env-file=.env index.ts",
+		"build": "tsc && pnpm --dir .. build:ui",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@12.4.1",
+	"dependencies": {
+		"cors": "^2.8.6",
+		"express": "^5.2.1",
+		"mongoose": "^9.10.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/node": "^22.20.2",
+		"eslint": "^10.10.0",
+		"globals": "^17.12.0",
+		"jiti": "^2.7.0",
+		"tsx": "^4.23.13",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.70.0"
+	},
+	"type": "module"
+}
