@@ -2,4 +2,4 @@
 
 It is deployed on Render and can be found at the following link:
 
-https://phoneBook.onrender.com/
+https://phonebook-f2qb.onrender.com/
