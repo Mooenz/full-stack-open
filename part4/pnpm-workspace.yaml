@@ -1,0 +1,5 @@
+allowBuilds:
+  bcrypt: false
+  esbuild: false
+minimumReleaseAgeExclude:
+  - eslint@10.14.0

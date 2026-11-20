@@ -1,0 +1,48 @@
+{
+	"name": "part4",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "NODE_ENV=production node index.js",
+		"dev": "NODE_ENV=development tsx watch --env-file=.env index.ts",
+		"build": "tsc",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"test": "NODE_ENV=test tsx --env-file=.env --test --test-concurrency=1"
+	},
+	"keywords": [],
+	"author": "Mooenz",
+	"license": "ISC",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "12.16.1",
+			"onFail": "download"
+		}
+	},
+	"dependencies": {
+		"bcrypt": "^6.0.0",
+		"cors": "^2.8.6",
+		"express": "^5.3.0",
+		"jsonwebtoken": "^9.0.3",
+		"mongoose": "^9.11.4"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"@types/bcrypt": "^6.0.0",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/jsonwebtoken": "^9.0.10",
+		"@types/node": "^26.6.6",
+		"eslint": "^10.14.0",
+		"globals": "^17.13.0",
+		"jiti": "^2.7.0",
+		"supertest": "^7.3.1",
+		"tsx": "^4.23.15",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.72.1"
+	},
+	"type": "module"
+}

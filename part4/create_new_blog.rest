@@ -1,0 +1,10 @@
+POST  http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjZhZTUwZWRmYTg5MzgzZWRkYjgxYTM0NSIsImlhdCI6MTc5MzQ2ODI0MCwiZXhwIjoxNzkzNDcxODQwfQ.yAgIgIC3mm83NE1rp2sXuUE5HdFcX0ZGW-4gKNwlztU
+
+{
+  "title": "Go To Statement Considered Harmful",
+  "author": "Edsger W. Dijkstra",
+  "url": "https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf",
+  "likes": 50  
+}
